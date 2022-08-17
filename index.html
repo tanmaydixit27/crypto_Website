@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="bullphoto.png" />
+    <title>STOCK AND CRYPTO</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+      .heading {
+        background-color: #185adb;
+        text-align: center;
+        text-shadow: 2px 2px 5px red;
+        font-family: "Brush Script MT", cursive;
+      }
+      body {
+        background-image: url("stockmarketphoto.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      .card {
+        background: rgba(0, 0, 0, 0.5) !important;
+        margin: auto;
+        position: relative;
+      }
+      .author {
+        color: darkblue;
+        margin-left: 10px;
+      }
+
+      section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+        margin: auto;
+      }
+      img {
+        /* position: absolute; */
+        width: 20rem !important;
+        height: auto;
+        padding: 5px 10px;
+        border-radius: 10px !important;
+      }
+      .date {
+        font-weight: bold !important;
+      }
+      .title {
+        background-color: black !important;
+        color: #bf1363 !important;
+        padding: 6px 16px;
+      }
+      .card-footer {
+        color: white !important;
+        margin: 0% !important;
+      }
+      .content {
+        color: white !important;
+        font-weight: bold;
+      }
+      .author {
+        color: aqua !important;
+        background-color: black !important;
+        padding: 0px 20px;
+      }
+      button {
+        margin-left: 18rem;
+        margin-top: 5px;
+      }
+      select {
+        background-color: rgba(0, 0, 0, 0.2) !important;
+        width: auto !important;
+        margin-left: 40px !important;
+        color: white !important;
+      }
+      option {
+        color: black !important;
+        text-transform: uppercase;
+      }
+      footer {
+        text-align: center;
+        padding: 3px;
+        background-color: #511281;
+        color: white;
+        font-family: Copperplate, Papyrus, fantasy;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="heading">
+      <h1>STOCK MARKET AND CRYPTO NEWS</h1>
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <!-- Brand -->
+      <a class="navbar-brand" style="color: blue" href="#">HOME</a>
+
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" style="color: crimson" href="crypto.html"
+            >CRYPTO</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="color: darkmagenta" href="https://www.moneycontrol.com/stocksmarketsindia/">STOCK MARKET</a
+          >
+        </li>
+        
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbardrop"
+            style="color: forestgreen"
+            data-toggle="dropdown"
+          >
+            FAV
+          </a>
+          <div class="dropdown-menu">
+            <a
+              class="dropdown-item"
+              href="https://www.coindesk.com/price/bitcoin"
+              style="color: #ffd371"
+              >BITCOIN</a
+            >
+            <a
+              class="dropdown-item"
+              href="https://www.nseindia.com/"
+              style="color: #512d6d"
+              >NSE</a
+            >
+            <a
+              class="dropdown-item"
+              href="https://www.bseindia.com/"
+              style="color: #ff67e7"
+              >BSE</a
+            >
+          </div>
+        </li>
+        <li>
+          <select class="form-control" id="country">
+            <option value="null">Select Your COUNTRY</option>
+            <option value="in">India</option>
+            <option value="au">Australia</option>
+          </select>
+        </li>
+
+        <li>
+          <select class="form-control" id="category">
+            <option value="null">Select Your News Category</option>
+            <option value="business">Business</option>
+            <option value="sports">sports</option>
+            <option value="entertainment">entertainment</option>
+            <option value="health">health</option>
+            <option value="science">science</option>
+            <option value="technology">technology</option>
+          </select>
+        </li>
+        <li>
+          <button class="btn btn-sm btn-danger" id="click">Click</button>
+        </li>
+      </ul>
+    </nav>
+    <br />
+
+    <section class="news"></section>
+    <footer>
+      <p>
+        Website by:Neeraj Choubisa <br />
+        <a href="neerajchoubisa876@gmail.com">neerajchoubisa876@gmail.com</a>
+      </p>
+      <p>
+        Website by:Tanmay Narain Dixit <br />
+        <a href="tanmaydixit7054@gmail.com">tanmaydixit7054@gmail.com</a>
+      </p>
+
+      <p>COPYRIGHT &#169;</p>
+      <br />
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        fetch(
+          "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=3e3630bd009a40ef9a36da5dfee895de"
+        )
+          .then((resp) => resp.json())
+          .then((data) => {
+            data.articles.forEach((element) => {
+              // console.log(element);
+              var card = <div class="card border-dark">
+        <div class="card-header text-white">
+         <strong>Author:</strong><span class="author"><strong >${element.source.name}</strong></span>
+        </div>
+        <img class="card-img-top" src="${element.urlToImage}" alt=""/>
+        <div class="card-body">
+          <h5 class="card-title title">${element.title}</h5>
+          <p class="card-text content">${element.description}</p>
+          <p class="card-text mt-3 content">${element.content}</p>
+          <a href="${element.url}" class="btn btn-primary">Source</a>
+        </div>
+        <div class="card-footer">
+            <p class="text-center date">${element.publishedAt}</p>
+        </div>
+    </div>;
+              document.querySelector(".news").innerHTML += card;
+            });
+          })
+          .catch((err) => console.log(err));
+      });
+
+      const click = document.querySelector("#click");
+      var country = document.querySelector("#country");
+      var category = document.querySelector("#category");
+      click.addEventListener("click", () => {
+        document.querySelector(".news").innerHTML = "";
+        fetch(`
+https://newsapi.org/v2/top-headlines?country=${country.value}&category=${category.value}&apiKey=${API_KEY}`)
+          .then((resp) => resp.json())
+          .then((data) => {
+            console.log(data);
+            data.articles.forEach((element) => {
+              console.log(element);
+              var card = `<div class="card border-dark">
+                  <div class="card-header text-white">
+                   <strong>Author:</strong><span class="author"><strong >${element.source.name}</strong></span>
+                  </div>
+                  <img class="card-img-top" src="${element.urlToImage}" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title title">${element.title}</h5>
+                    <p class="card-text content">${element.description}</p>
+                    <p class="card-text mt-3 content">${element.content}</p>
+                    <a href="${element.url}" class="btn btn-primary">Source</a>
+                  </div>
+                  <div class="card-footer">
+                      <p class="text-center date">${element.publishedAt}</p>
+                  </div>
+              </div>`;
+              document.querySelector(".news").innerHTML += card;
+            });
+          })
+          .catch((err) => console.log(err));
+      });
+    </script>
+  </body>
+</html>

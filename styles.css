@@ -1,0 +1,20 @@
+.heading{
+    background-color:#185ADB;
+    text-align: center;
+    text-shadow: 2px 2px 5px red;
+    font-family: "Brush Script MT", cursive;
+}
+body{
+    background-image: url("stockmarketphoto.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+     
+}
+footer {
+    text-align: center;
+    padding: 3px;
+    background-color:#511281;
+    color: white;
+    font-family: Copperplate, Papyrus, fantasy;
+  }
